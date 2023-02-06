@@ -22,11 +22,12 @@ spec:
       name: $(workload.metadata.name)$-deploy
     spec:
       serviceAccountName: default
-      template:
-        - ytt:
-            ignoreUnknownComments: true
-            valuesFrom:
+      fetch:
+        - inline:
+            pathsFrom:
               - configMapRef:
-                  name: micropet-service-$(workload.metadata.name)$-config
+                  name: $(workload.metadata.name)$-server
+      template:
+        - ytt: {}
       deploy:
         - kapp: {}

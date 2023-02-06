@@ -3,11 +3,15 @@ kind: Workload
 metadata:
   name: hello-app
   labels:
-    apps.tanzu.vmware.com/workload-type: app-workload    
+    apps.tanzu.vmware.com/workload-type: app-workload
   annotations:
     autoscaling.knative.dev/minScale: "1"
 spec:  
+  params:
+    - name: dockerfile
+      value: Dockerfile     
   source:
+    subPath: hello-app
     git:
       url: <https URL for your generated project's Git repository>
       ref:
