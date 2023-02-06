@@ -1,3 +1,7 @@
-deploy:
-	kubectl apply -f supplychains
+deploy-server:
+	kubectl apply -f supplychains/k8s
+
+deploy-knative:
+	kubectl apply -f supplychains/knative
+
 

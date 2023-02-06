@@ -1,0 +1,46 @@
+apiVersion: carto.run/v1alpha1
+kind: ClusterSupplyChain
+metadata:
+  name: my-company-supply-chain-knative
+spec:
+  selector:
+    apps.tanzu.vmware.com/workload-type: app-workload
+  resources:
+    - name: source-provider
+      templateRef:
+        kind: ClusterSourceTemplate
+        name: source-template
+    - name: image-provider
+      templateRef:
+        kind: ClusterImageTemplate
+        name: kaniko-template
+      sources:
+        - resource: source-provider
+          name: source
+      params:
+        - name: registry
+          value:
+            ca_cert_data: ""
+            repository: library/tanzu-supply-chain
+            server: akseutap4registry.azurecr.io
+    - images:
+        - name: image
+          resource: image-provider
+      name: config-provider
+      templateRef:
+        kind: ClusterConfigTemplate
+        name: convention-template
+    - configs:
+        - name: config
+          resource: config-provider
+      name: app-config
+      templateRef:
+        kind: ClusterConfigTemplate
+        name: config-template
+    - name: deploy
+      templateRef:
+        kind: ClusterTemplate
+        name: deploy-template
+      configs:
+        - resource: app-config
+          name: config

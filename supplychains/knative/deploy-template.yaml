@@ -1,0 +1,22 @@
+apiVersion: carto.run/v1alpha1
+kind: ClusterTemplate
+metadata:
+  name: deploy-template
+spec:
+  template:
+    apiVersion: kappctrl.k14s.io/v1alpha1
+    kind: App
+    metadata:
+      name: $(workload.metadata.name)$-deploy
+    spec:
+      serviceAccountName: default      
+      fetch:    
+      - inline:          
+          pathsFrom:            
+            - configMapRef:
+                name: $(workload.metadata.name)$                
+      template:
+        - ytt:
+            ignoreUnknownComments: true
+      deploy:
+        - kapp: {}
