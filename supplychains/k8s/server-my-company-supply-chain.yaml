@@ -1,7 +1,7 @@
 apiVersion: carto.run/v1alpha1
 kind: ClusterSupplyChain
 metadata:
-  name: my-company-supply-chain-server
+  name: my-company-supply-chain
 spec:
   selector:
     apps.tanzu.vmware.com/workload-type: app-workload

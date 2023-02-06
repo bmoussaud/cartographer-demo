@@ -9,12 +9,12 @@ spec:
     metadata:
       name: $(workload.metadata.name)$-deploy
     spec:
-      serviceAccountName: default      
-      fetch:    
-      - inline:          
-          pathsFrom:            
-            - configMapRef:
-                name: $(workload.metadata.name)$                
+      serviceAccountName: default
+      fetch:
+        - inline:
+            pathsFrom:
+              - configMapRef:
+                  name: $(workload.metadata.name)$
       template:
         - ytt:
             ignoreUnknownComments: true
