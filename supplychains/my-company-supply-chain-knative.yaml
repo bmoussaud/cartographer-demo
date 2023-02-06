@@ -4,7 +4,7 @@ metadata:
   name: my-company-supply-chain
 spec:
   selector:
-    app.tanzu.vmware.com/workload-type: app-workload
+    apps.tanzu.vmware.com/workload-type: app-workload
   resources:
     - name: source-provider
       templateRef:
@@ -17,6 +17,12 @@ spec:
       sources:
         - resource: source-provider
           name: source
+      params:
+        - name: registry
+          value:
+            ca_cert_data: ""
+            repository: library/tanzu-supply-chain
+            server: akseutap4registry.azurecr.io
     - images:
         - name: image
           resource: image-provider
