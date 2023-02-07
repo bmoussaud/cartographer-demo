@@ -4,12 +4,11 @@ metadata:
   name: hello-app
   labels:
     apps.tanzu.vmware.com/workload-type: app-workload
+    app.kubernetes.io/part-of: micropets
+    app.kubernetes.io/name: demo
   annotations:
     autoscaling.knative.dev/minScale: "1"
-spec:  
-  params:
-    - name: dockerfile
-      value: Dockerfile     
+spec:
   source:
     subPath: hello-app
     git:
