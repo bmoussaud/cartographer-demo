@@ -1,7 +1,7 @@
 apiVersion: carto.run/v1alpha1
 kind: Workload
 metadata:
-  name: hello-app
+  name: hello-app-spring-java
   labels:
     apps.tanzu.vmware.com/workload-type: app-workload
     app.kubernetes.io/part-of: micropets

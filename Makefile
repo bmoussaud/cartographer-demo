@@ -19,5 +19,5 @@ status:
 	tanzu apps workload get hello-app
 	kubectl tree workload hello-app
 
-diff: 
-	@diff ./supplychains/knative/knative-my-company-supply-chain.yaml  supplychains/k8s/server-my-company-supply-chain.yaml -U2
+diff: 	
+	@diff supplychains/k8s/server-my-company-supply-chain.yaml ./supplychains/knative/knative-my-company-supply-chain.yaml -U2
