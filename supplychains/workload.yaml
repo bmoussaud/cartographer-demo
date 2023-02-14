@@ -1,0 +1,11 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  labels:
+    app.kubernetes.io/name: demo
+    app.kubernetes.io/part-of: micropets
+    apps.tanzu.vmware.com/workload-type: app-workload
+  name: hello-app-spring-java
+spec:
+  source:
+    image: akseutap4registry.azurecr.io/library/vs-extension-sources:latest@sha256:5b1680551e6025d4bc195428b107105b988a7b4c195ef96080a472b5289f62c4
